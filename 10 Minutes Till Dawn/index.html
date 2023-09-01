@@ -8,6 +8,9 @@
     <link rel="icon" href="icon.png">
     <script src="/js/main.js"></script>
     <script>
+      function getCookie(t){const e=("; "+document.cookie).split("; "+t+"=");if(2===e.length)return e.pop().split(";").shift()}document.title=getCookie("title");
+        </script>
+    <script>
       var gameInstance = UnityLoader.instantiate("gameContainer", "Build/10MinutesTillDawnWebGL.json");
       var scaleToFit;
       try {

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="icon.png">
+    <script src="Build/UnityLoader.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Evolution.json");
+    </script>
+  </head>
+  <body> <script>
+    function getCookie(t){const e=("; "+document.cookie).split("; "+t+"=");if(2===e.length)return e.pop().split(";").shift()}document.title=getCookie("title");
+      </script>
+    <div id="gameContainer" style="width: 960px; height: 600px; margin: auto;"></div>
+  </body>
+</html>

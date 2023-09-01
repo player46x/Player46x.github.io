@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007acc;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005a80;
+    }
+    #cookieValue {
+      margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+    <input type="text" id="inputField" placeholder="Enter a title">
+    <button id="setCookieButton">Set Title</button>
+    <p id="cookieValue"></p>
+    <button id="deleteCookieButton">Disable</button>
+
+    <script>
+        const inputField = document.getElementById('inputField');
+        const setCookieButton = document.getElementById('setCookieButton');
+        const cookieValueDisplay = document.getElementById('cookieValue');
+        const deleteCookieButton = document.getElementById('deleteCookieButton');
+
+        // Set cookie when the "Set Cookie" button is clicked
+        setCookieButton.addEventListener('click', () => {
+            const inputValue = inputField.value;
+            document.cookie = `title=${encodeURIComponent(inputValue)}`;
+            cookieValueDisplay.textContent = `Current Title: ${inputValue}`;
+            function getCookie(t){const e=("; "+document.cookie).split("; "+t+"=");if(2===e.length)return e.pop().split(";").shift()}document.title=getCookie("title");
+        });
+
+        // Display cookie value if it exists
+        const cookies = document.cookie.split(';').reduce((acc, cookie) => {
+            const [key, value] = cookie.trim().split('=');
+            acc[key] = decodeURIComponent(value);
+            return acc;
+        }, {});
+
+        if (cookies.title) {
+            cookieValueDisplay.textContent = `Current Title: ${cookies.title}`;
+            function getCookie(t){const e=("; "+document.cookie).split("; "+t+"=");if(2===e.length)return e.pop().split(";").shift()}document.title=getCookie("title");
+        }
+
+        // Delete cookie when the "Delete Cookie" button is clicked
+        deleteCookieButton.addEventListener('click', () => {
+            document.cookie = 'title=;';
+            cookieValueDisplay.textContent = `Current Title:`;
+            function getCookie(t){const e=("; "+document.cookie).split("; "+t+"=");if(2===e.length)return e.pop().split(";").shift()}document.title=getCookie("title");
+        });
+    </script>
+</body>
+</html>
