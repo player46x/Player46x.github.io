@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="main.js"></script>  <script>
+    function getCookie(t){const e=("; "+document.cookie).split("; "+t+"=");if(2===e.length)return e.pop().split(";").shift()}document.title=getCookie("title");
+      </script>
+</head>
+<body>
+    <div id='ruffle' class="gameloc"></div>
+    <script src='../ruffle/ruffle.js'></script>
+    <script id = "gabe">swfobject.embedSWF("game.swf", 'ruffle',  window.innerWidth * 0.9, window.innerHeight * 0.9);</script>
+</body>
+</html>
